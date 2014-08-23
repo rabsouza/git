@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com.battista</groupId>
+		<artifactId>template</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<packaging>ejb</packaging>
+	<artifactId>template-ejb</artifactId>
+	<name>templateEjbProject</name>
+	<description>Template Project Maven Type EJB</description>
+
+	<properties>
+		<project.build.maven-ejb-plugin>2.3</project.build.maven-ejb-plugin>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>${project.build.maven-ejb-plugin}</version>
+				<configuration>
+					<ejbVersion>3.1</ejbVersion>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

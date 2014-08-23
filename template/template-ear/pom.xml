@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com.battista</groupId>
+		<artifactId>template</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>template-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>templateEarProject</name>
+	<description>Template Project Maven Type EAR</description>
+
+	<properties>
+		<project.build.maven-ear-plugin>2.6</project.build.maven-ear-plugin>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>br.com.battista</groupId>
+			<artifactId>template-util</artifactId>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.battista</groupId>
+			<artifactId>template-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.battista</groupId>
+			<artifactId>template-web</artifactId>
+			<type>war</type>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>template</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${project.build.maven-ear-plugin}</version>
+				<configuration>
+					<version>6</version>
+					<!-- Use Java EE ear libraries as needed. Java EE ear libraries are 
+						in easy way to package any libraries needed in the ear, and automatically 
+						have any modules (EJB-JARs and WARs) use them -->
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>br.com.battista</groupId>
+							<artifactId>template-ejb</artifactId>
+						</ejbModule>
+						<jarModule>
+							<groupId>br.com.battista</groupId>
+							<artifactId>template-util</artifactId>
+						</jarModule>
+						<webModule>
+							<groupId>br.com.battista</groupId>
+							<artifactId>template-web</artifactId>
+							<contextRoot>/template</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
