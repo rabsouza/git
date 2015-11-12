@@ -19,9 +19,9 @@ import br.com.caelum.stella.boleto.transformer.BoletoGenerator;
 public class GeraBoletoTest {
 
 	private static final int DIA_VENC_BOLETO = 20;
-	private static final int DIA_DOC_BOLETO = 1;
-	private static final int MES_BOLETO = 8;
-	private static final int ANO_BOLETO = 2014;
+	private static final int DIA_DOC_BOLETO = 5;
+	private static final int MES_BOLETO = 12;
+	private static final int ANO_BOLETO = 2015;
 
 	private static final String base_path = "export-" + DIA_VENC_BOLETO + "-" + MES_BOLETO + "-" + ANO_BOLETO + "-";
 
@@ -35,7 +35,7 @@ public class GeraBoletoTest {
 		Emissor emissor = Emissor
 				.newEmissor()
 				.withCedente(
-						"Centro Federal de Educação Tecnológica de Minas Gerais")
+						"Centro Federal de Educação Tecnológica - FUNEC ")
 				.withAgencia(1615).withDvAgencia('2').withContaCorrente(333003)
 				.withDvContaCorrente('6').withCarteira(18)
 				.withNossoNumero(Long.valueOf(+(rand.nextInt(90000) + 90000) + "9854" + (rand.nextInt(90000) + 90000)));
@@ -59,12 +59,12 @@ public class GeraBoletoTest {
 				.withDatas(datas)
 				.withEmissor(emissor)
 				.withSacado(sacado)
-				.withValorBoleto("450.00")
+				.withValorBoleto("350.00")
 				.withInstrucoes(
-						"Contribuinte: RAFAEL ALESSANDRO BATISTA " + formatter.format(calendar.getTime()) + "/ " + (ANO_BOLETO),
+						"Contribuinte: RAFAEL ALESSANDRO BATISTA " + formatter.format(calendar.getTime()) + "/ " + ANO_BOLETO,
 						"CPF/CNPJ: 079.667.236-90", " ",
 						"Unidade: 30 - COLEGIADO DA DIRETORIA",
-						"Tipo Pagamento: 165 - DPPG-ESPECIALIZAÇÃO EM AADSI")
+						"Tipo Pagamento: 165 - DPCT-TÉCNICO EM ADMINISTRAÇÃO")
 				.withLocaisDePagamento(
 						"ATÉ O VENCIMENTO, PAGÁVEL EM QUALQUER AGÊNCIA DA REDE BANCÁRIA")
 				.withNoDocumento("0" + (rand.nextInt(90000) + 90000));
@@ -72,10 +72,13 @@ public class GeraBoletoTest {
 		BoletoGenerator gerador = new BoletoGenerator(boleto);
 
 		// Para gerar um boleto em PDF
+		System.out.println("Path: "+ base_path + "BancoDoBrasilRafael.pdf");
 		gerador.toPDF(base_path + "BancoDoBrasilRafael.pdf");
 
 		// Para gerar um boleto em PNG
+		System.out.println("Path: "+ base_path + "BancoDoBrasilRafael.png");
 		gerador.toPNG(base_path + "BancoDoBrasilRafael.png");
+
 
 	}
 
@@ -89,7 +92,7 @@ public class GeraBoletoTest {
 		Emissor emissor = Emissor
 				.newEmissor()
 				.withCedente(
-						"Centro Federal de Educação Tecnológica de Minas Gerais")
+						"Centro Federal de Educação Tecnológica - FUNEC ")
 				.withAgencia(1615).withDvAgencia('2').withContaCorrente(4578451)
 				.withDvContaCorrente('6').withCarteira(18)
 				.withNossoNumero(Long.valueOf(+(rand.nextInt(90000) + 90000) + "8621" + (rand.nextInt(90000) + 90000)));
@@ -113,12 +116,12 @@ public class GeraBoletoTest {
 				.withDatas(datas)
 				.withEmissor(emissor)
 				.withSacado(sacado)
-				.withValorBoleto("530.00")
+				.withValorBoleto("330.00")
 				.withInstrucoes(
-						"Contribuinte: VANESSA PARREIRAS DE CASTRO " + formatter.format(calendar.getTime()) + "/ " + (ANO_BOLETO),
+						"Contribuinte: VANESSA PARREIRAS DE CASTRO " + formatter.format(calendar.getTime()) + "/ " + ANO_BOLETO,
 						"CPF/CNPJ: 046.095.776-74", " ",
 						"Unidade: 30 - COLEGIADO DA DIRETORIA",
-						"Tipo Pagamento: 135 - DPPG-ESPECIALIZAÇÃO EM GERH")
+						"Tipo Pagamento: 135 - DPCT-TÉCNICO EM GERH")
 				.withLocaisDePagamento(
 						"ATÉ O VENCIMENTO, PAGÁVEL EM QUALQUER AGÊNCIA DA REDE BANCÁRIA")
 				.withNoDocumento("0" + (rand.nextInt(90000) + 90000));
@@ -126,9 +129,11 @@ public class GeraBoletoTest {
 		BoletoGenerator gerador = new BoletoGenerator(boleto);
 
 		// Para gerar um boleto em PDF
+		System.out.println("Path: "+ base_path + "BancoDoBrasilVanessa.pdf");
 		gerador.toPDF(base_path + "BancoDoBrasilVanessa.pdf");
 
 		// Para gerar um boleto em PNG
+		System.out.println("Path: "+ base_path + "BancoDoBrasilVanessa.png");
 		gerador.toPNG(base_path + "BancoDoBrasilVanessa.png");
 
 	}
