@@ -19,3 +19,6 @@ bin/
 
 ### Ignore path log
 log/
+
+### Ignore path log
+export/
